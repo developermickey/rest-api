@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Post</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <h1>Quora Posts</h1>
+    <div class="mybtn">
+        <a class="new" href="/posts/new">Create New Post</a>
+    </div>
+    <div class="container">
+        <% for(post of posts){%>
+            <div class="post">
+                <h3 class="user">
+                    @<%= post.username %>
+                </h3>
+                <h4 class="content">
+                    <%= post.content %>
+                </h4>
+                <div class="btn-group">
+                    <a class="view" href="/posts/<%= post.id %>">View Post</a>
+                    <a class="edit" href="/posts/<%= post.id %>/edit">Edit</a>
+
+                    <form method="post" action="/posts/<%= post.id %>?_method=DELETE">
+                        <button class="delete">Delete</button>
+                    </form>
+
+
+                </div>
+            </div>
+            <% }%>
+    </div>
+
+    <section class="footer">
+        <p>Copyright 2024 Quora Post | All rights reserved</p>
+    </section>
+</body>
+
+</html>
